@@ -11,6 +11,8 @@
     <AssemblyName>TopicSubscriber</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -20,7 +22,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -53,6 +55,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SolaceSystems.Solclient.Messaging, Version=10.8.0.0, Culture=neutral, PublicKeyToken=e191a36e57c23464, processorArchitecture=MSIL">
+      <HintPath>..\packages\SolaceSystems.Solclient.Messaging.10.8.0\lib\net20\SolaceSystems.Solclient.Messaging.dll</HintPath>
+    </Reference>
     <Reference Include="SolaceSystems.Solclient.Messaging_64">
       <HintPath>..\lib\SolaceSystems.Solclient.Messaging_64.dll</HintPath>
     </Reference>
@@ -65,10 +70,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TopicSubscriber.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Y "$(SolutionDir)"\lib\libsolclient_64.dll "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\SolaceSystems.Solclient.Messaging.10.8.0\build\net20\SolaceSystems.Solclient.Messaging.targets" Condition="Exists('..\packages\SolaceSystems.Solclient.Messaging.10.8.0\build\net20\SolaceSystems.Solclient.Messaging.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SolaceSystems.Solclient.Messaging.10.8.0\build\net20\SolaceSystems.Solclient.Messaging.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SolaceSystems.Solclient.Messaging.10.8.0\build\net20\SolaceSystems.Solclient.Messaging.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

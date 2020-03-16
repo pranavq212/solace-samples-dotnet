@@ -1,26 +1,6 @@
-﻿#region Copyright & License
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-#endregion
-
-using System;
+﻿using System;
 using System.Text;
+using System.Diagnostics;
 using SolaceSystems.Solclient.Messaging;
 using System.Threading;
 
@@ -46,53 +26,67 @@ namespace Tutorial
 
         void Run(IContext context, string host)
         {
-            // Validate parameters
-            if (context == null)
+            try
             {
-                throw new ArgumentException("Solace Systems API context Router must be not null.", "context");
-            }
-            if (string.IsNullOrWhiteSpace(host))
-            {
-                throw new ArgumentException("Solace Messaging Router host name must be non-empty.", "host");
-            }
-            if (string.IsNullOrWhiteSpace(VPNName))
-            {
-                throw new InvalidOperationException("VPN name must be non-empty.");
-            }
-            if (string.IsNullOrWhiteSpace(UserName))
-            {
-                throw new InvalidOperationException("Client username must be non-empty.");
-            }
 
-            // Create session properties
-            SessionProperties sessionProps = new SessionProperties()
-            {
-                Host = host,
-                VPNName = VPNName,
-                UserName = UserName,
-                Password = Password,
-                ReconnectRetries = DefaultReconnectRetries
-            };
+                // Validate parameters
+                if (context == null)
+                {
+                    throw new ArgumentException("Solace Systems API context Router must be not null.", "context");
+                }
+                if (string.IsNullOrWhiteSpace(host))
+                {
+                    throw new ArgumentException("Solace Messaging Router host name must be non-empty.", "host");
+                }
+                if (string.IsNullOrWhiteSpace(VPNName))
+                {
+                    throw new InvalidOperationException("VPN name must be non-empty.");
+                }
+                if (string.IsNullOrWhiteSpace(UserName))
+                {
+                    throw new InvalidOperationException("Client username must be non-empty.");
+                }
 
-            // Connect to the Solace messaging router
-            Console.WriteLine("Connecting as {0}@{1} on {2}...", UserName, VPNName, host);
-            // NOTICE HandleMessage as the message event handler
-            Session = context.CreateSession(sessionProps, HandleMessage, null);
-            ReturnCode returnCode = Session.Connect();
-            if (returnCode == ReturnCode.SOLCLIENT_OK)
-            {
-                Console.WriteLine("Session successfully connected.");
+                // Create session properties
+                SessionProperties sessionProps = new SessionProperties()
+                {
+                    Host = host,
+                    VPNName = VPNName,
+                    UserName = UserName,
+                    Password = Password,
+                    ReconnectRetries = DefaultReconnectRetries
+                };
 
-                // This is the topic on Solace messaging router where a message is published
-                // Must subscribe to it to receive messages
-                Session.Subscribe(ContextFactory.Instance.CreateTopic("tutorial/topic"), true);
+                // Connect to the Solace messaging router
+                Console.WriteLine("Connecting as {0}@{1} on {2}...", UserName, VPNName, host);
+                Trace.WriteLine("Connecting as " + UserName + "@"+ VPNName + " on "+ host + "...");
+            
+                // NOTICE HandleMessage as the message event handler
+                Session = context.CreateSession(sessionProps, HandleMessage, null);
+                ReturnCode returnCode = Session.Connect();
+                if (returnCode == ReturnCode.SOLCLIENT_OK)
+                {
+                    Console.WriteLine("Session successfully connected.");
+                    Trace.WriteLine("Session successfully connected.");
 
-                Console.WriteLine("Waiting for a message to be published...");
-                WaitEventWaitHandle.WaitOne();
+                    // This is the topic on Solace messaging router where a message is published
+                    // Must subscribe to it to receive messages
+                    Session.Subscribe(ContextFactory.Instance.CreateTopic("tutorial/topic"), true);
+
+                    Console.WriteLine("Waiting for a message to be published...");
+                    Trace.WriteLine("Waiting for a message to be published...");
+                    WaitEventWaitHandle.WaitOne();
+                }
+                else
+                {
+                    Console.WriteLine("Error connecting, return code: {0}", returnCode);
+                    Trace.WriteLine("Error connecting, return code: "+ returnCode);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Error connecting, return code: {0}", returnCode);
+                Console.WriteLine("Exception thrown: {0}", ex.Message);
+                Trace.WriteLine("Exception thrown: " + ex.Message);
             }
         }
 
@@ -103,14 +97,24 @@ namespace Tutorial
         /// <param name="args"></param>
         private void HandleMessage(object source, MessageEventArgs args)
         {
-            Console.WriteLine("Received published message.");
-            // Received a message
-            using (IMessage message = args.Message)
+            try
             {
-                // Expecting the message content as a binary attachment
-                Console.WriteLine("Message content: {0}", Encoding.ASCII.GetString(message.BinaryAttachment));
-                // finish the program
-                WaitEventWaitHandle.Set();
+                Console.WriteLine("Received published message.");
+                Trace.WriteLine("Received published message.");
+                // Received a message
+                using (IMessage message = args.Message)
+                {
+                    // Expecting the message content as a binary attachment
+                    Console.WriteLine("Message content: {0}", Encoding.ASCII.GetString(message.BinaryAttachment));
+                    Trace.WriteLine("Message content: " + Encoding.ASCII.GetString(message.BinaryAttachment));
+                    // finish the program
+                    //WaitEventWaitHandle.Set();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception thrown: {0}", ex.Message);
+                Trace.WriteLine("Exception thrown: "+ex.Message);
             }
         }
 
@@ -144,6 +148,7 @@ namespace Tutorial
             if (args.Length < 3)
             {
                 Console.WriteLine("Usage: TopicPublisher <host> <username>@<vpnname> <password>");
+                Trace.WriteLine("Usage: TopicPublisher <host> <username>@<vpnname> <password>");
                 Environment.Exit(1);
             }
 
@@ -151,6 +156,7 @@ namespace Tutorial
             if (split.Length != 2)
             {
                 Console.WriteLine("Usage: TopicPublisher <host> <username>@<vpnname> <password>");
+                Trace.WriteLine("Usage: TopicPublisher <host> <username>@<vpnname> <password>");
                 Environment.Exit(1);
             }
 
@@ -189,6 +195,7 @@ namespace Tutorial
             catch (Exception ex)
             {
                 Console.WriteLine("Exception thrown: {0}", ex.Message);
+                Trace.WriteLine("Exception thrown: "+ex.Message);
             }
             finally
             {
@@ -196,6 +203,7 @@ namespace Tutorial
                 ContextFactory.Instance.Cleanup();
             }
             Console.WriteLine("Finished.");
+            Trace.WriteLine("Finished.");
         }
         #endregion
     }

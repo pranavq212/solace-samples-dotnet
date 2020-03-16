@@ -1,26 +1,6 @@
-﻿#region Copyright & License
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-#endregion
-
-using System;
+﻿using System;
 using System.Text;
+using System.Threading;
 using SolaceSystems.Solclient.Messaging;
 
 /// <summary>
@@ -39,74 +19,93 @@ namespace Tutorial
         string Password { get; set; }
 
         const int DefaultReconnectRetries = 3;
+        private EventWaitHandle WaitEventWaitHandle = new AutoResetEvent(false);
 
         void Run(IContext context, string host)
         {
-            // Validate parameters
-            if (context == null)
+            try
             {
-                throw new ArgumentException("Solace Systems API context Router must be not null.", "context");
-            }
-            if (string.IsNullOrWhiteSpace(host))
-            {
-                throw new ArgumentException("Solace Messaging Router host name must be non-empty.", "host");
-            }
-            if (string.IsNullOrWhiteSpace(VPNName))
-            {
-                throw new InvalidOperationException("VPN name must be non-empty.");
-            }
-            if (string.IsNullOrWhiteSpace(UserName))
-            {
-                throw new InvalidOperationException("Client username must be non-empty.");
-            }
-
-            // Create session properties
-            SessionProperties sessionProps = new SessionProperties()
-            {
-                Host = host,
-                VPNName = VPNName,
-                UserName = UserName,
-                Password = Password,
-                ReconnectRetries = DefaultReconnectRetries
-            };
-
-            // Connect to the Solace messaging router
-            Console.WriteLine("Connecting as {0}@{1} on {2}...", UserName, VPNName, host);
-            using (ISession session = context.CreateSession(sessionProps, null, null))
-            {
-                ReturnCode returnCode = session.Connect();
-                if (returnCode == ReturnCode.SOLCLIENT_OK)
+                // Validate parameters
+                if (context == null)
                 {
-                    Console.WriteLine("Session successfully connected.");
-                    PublishMessage(session);
+                    throw new ArgumentException("Solace Systems API context Router must be not null.", "context");
                 }
-                else
+                if (string.IsNullOrWhiteSpace(host))
                 {
-                    Console.WriteLine("Error connecting, return code: {0}", returnCode);
+                    throw new ArgumentException("Solace Messaging Router host name must be non-empty.", "host");
                 }
+                if (string.IsNullOrWhiteSpace(VPNName))
+                {
+                    throw new InvalidOperationException("VPN name must be non-empty.");
+                }
+                if (string.IsNullOrWhiteSpace(UserName))
+                {
+                    throw new InvalidOperationException("Client username must be non-empty.");
+                }
+
+                // Create session properties
+                SessionProperties sessionProps = new SessionProperties()
+                {
+                    Host = host,
+                    VPNName = VPNName,
+                    UserName = UserName,
+                    Password = Password,
+                    ReconnectRetries = DefaultReconnectRetries
+                };
+
+                // Connect to the Solace messaging router
+                Console.WriteLine("Connecting as {0}@{1} on {2}...", UserName, VPNName, host);
+                using (ISession session = context.CreateSession(sessionProps, null, null))
+                {
+                    ReturnCode returnCode = session.Connect();
+                    if (returnCode == ReturnCode.SOLCLIENT_OK)
+                    {
+                        Console.WriteLine("Session successfully connected.");
+                        PublishMessage(session);
+                        WaitEventWaitHandle.Set();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error connecting, return code: {0}", returnCode);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception thrown: {0}", ex.Message);
             }
         }
 
         private void PublishMessage(ISession session)
         {
-            // Create the message
-            using (IMessage message = ContextFactory.Instance.CreateMessage())
+            try
             {
-                message.Destination = ContextFactory.Instance.CreateTopic("tutorial/topic");
-                // Create the message content as a binary attachment
-                message.BinaryAttachment = Encoding.ASCII.GetBytes("Sample Message");
+                // Create the message
+                using (IMessage message = ContextFactory.Instance.CreateMessage())
+                {
+                    message.Destination = ContextFactory.Instance.CreateTopic("tutorial/topic");
+                    // Create the message content as a binary attachment
+                    message.BinaryAttachment = Encoding.ASCII.GetBytes("Sample Message");
 
-                // Publish the message to the topic on the Solace messaging router
-                Console.WriteLine("Publishing message...");
-                ReturnCode returnCode = session.Send(message);
-                if (returnCode == ReturnCode.SOLCLIENT_OK)
-                {
-                    Console.WriteLine("Done.");
+                    // Publish the message to the topic on the Solace messaging router
+                    Console.WriteLine("Publishing message...");
+                    ReturnCode returnCode = session.Send(message);
+                    if (returnCode == ReturnCode.SOLCLIENT_OK)
+                    {
+                        Console.WriteLine("Done.");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Publishing failed, return code: {0}", returnCode);
+                        Console.ReadKey();
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Publishing failed, return code: {0}", returnCode);
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception thrown: {0}", ex.Message);
+                Console.ReadKey();
             }
         }
 
@@ -160,6 +159,7 @@ namespace Tutorial
             catch (Exception ex)
             {
                 Console.WriteLine("Exception thrown: {0}", ex.Message);
+                Console.ReadKey();
             }
             finally
             {
@@ -167,6 +167,7 @@ namespace Tutorial
                 ContextFactory.Instance.Cleanup();
             }
             Console.WriteLine("Finished.");
+            Console.ReadKey();
         }
 
         #endregion
