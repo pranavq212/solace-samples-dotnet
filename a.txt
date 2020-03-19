@@ -1,0 +1,385 @@
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING
+  RpcSs
+ [svchost.exe]
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING
+ Can not obtain ownership information
+  TCP    0.0.0.0:1801           0.0.0.0:0              LISTENING
+ [mqsvc.exe]
+  TCP    0.0.0.0:2103           0.0.0.0:0              LISTENING
+ [mqsvc.exe]
+  TCP    0.0.0.0:2105           0.0.0.0:0              LISTENING
+ [mqsvc.exe]
+  TCP    0.0.0.0:2107           0.0.0.0:0              LISTENING
+ [mqsvc.exe]
+  TCP    0.0.0.0:2179           0.0.0.0:0              LISTENING
+ [vmms.exe]
+  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING
+  TermService
+ [svchost.exe]
+  TCP    0.0.0.0:5040           0.0.0.0:0              LISTENING
+  CDPSvc
+ [svchost.exe]
+  TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING
+ [com.docker.backend.exe]
+  TCP    0.0.0.0:49664          0.0.0.0:0              LISTENING
+ Can not obtain ownership information
+  TCP    0.0.0.0:49665          0.0.0.0:0              LISTENING
+ [lsass.exe]
+  TCP    0.0.0.0:49666          0.0.0.0:0              LISTENING
+  EventLog
+ [svchost.exe]
+  TCP    0.0.0.0:49667          0.0.0.0:0              LISTENING
+  Schedule
+ [svchost.exe]
+  TCP    0.0.0.0:49668          0.0.0.0:0              LISTENING
+  SessionEnv
+ [svchost.exe]
+  TCP    0.0.0.0:49669          0.0.0.0:0              LISTENING
+  PolicyAgent
+ [svchost.exe]
+  TCP    0.0.0.0:49670          0.0.0.0:0              LISTENING
+ [spoolsv.exe]
+  TCP    0.0.0.0:49671          0.0.0.0:0              LISTENING
+ [lsass.exe]
+  TCP    0.0.0.0:49672          0.0.0.0:0              LISTENING
+ [mqsvc.exe]
+  TCP    0.0.0.0:49673          0.0.0.0:0              LISTENING
+ Can not obtain ownership information
+  TCP    0.0.0.0:55555          0.0.0.0:0              LISTENING
+ [com.docker.backend.exe]
+  TCP    10.17.249.59:139       0.0.0.0:0              LISTENING
+ Can not obtain ownership information
+  TCP    10.17.249.59:50806     35.174.127.31:443      ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:52352     198.252.206.25:443     ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:52505     40.100.145.146:443     ESTABLISHED
+ [OUTLOOK.EXE]
+  TCP    10.17.249.59:52568     52.113.194.132:443     ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:52614     52.98.8.34:443         TIME_WAIT
+  TCP    10.17.249.59:52651     13.70.74.65:443        ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:52665     52.44.53.196:443       TIME_WAIT
+  TCP    10.17.249.59:52698     40.100.144.226:443     TIME_WAIT
+  TCP    10.17.249.59:52708     117.18.232.200:443     ESTABLISHED
+ [ServiceHub.DataWarehouseHost.exe]
+  TCP    10.17.249.59:52750     52.98.2.178:443        ESTABLISHED
+ [OUTLOOK.EXE]
+  TCP    10.17.249.59:52761     111.221.29.254:443     ESTABLISHED
+ [ServiceHub.VSDetouredHost.exe]
+  TCP    10.17.249.59:52805     172.253.118.188:443    ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:52807     52.114.7.51:443        ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:52810     40.100.144.242:443     ESTABLISHED
+ [UcMapi.exe]
+  TCP    10.17.249.59:52816     10.10.17.70:80         SYN_SENT
+ [CcmExec.exe]
+  TCP    10.17.249.59:52817     3.95.53.28:443         ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:52818     3.95.53.28:443         LAST_ACK
+ [chrome.exe]
+  TCP    10.17.249.59:52828     167.246.44.170:443     ESTABLISHED
+ [lync.exe]
+  TCP    10.17.249.59:52839     34.107.165.220:443     ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:52902     52.114.7.17:443        ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:53675     52.98.0.34:443         ESTABLISHED
+ [OUTLOOK.EXE]
+  TCP    10.17.249.59:54503     52.139.250.253:443     ESTABLISHED
+  WpnService
+ [svchost.exe]
+  TCP    10.17.249.59:54595     52.114.7.31:443        ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:55081     52.114.7.31:443        ESTABLISHED
+ [Teams.exe]
+  TCP    10.17.249.59:55087     52.114.128.55:443      ESTABLISHED
+ [Teams.exe]
+  TCP    10.17.249.59:55091     52.114.159.79:443      ESTABLISHED
+ [Teams.exe]
+  TCP    10.17.249.59:55919     151.101.29.181:443     ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:55924     104.16.94.80:443       TIME_WAIT
+  TCP    10.17.249.59:55957     107.178.240.159:443    ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:55989     52.5.207.146:443       ESTABLISHED
+ [Postman.exe]
+  TCP    10.17.249.59:56017     52.139.250.253:443     ESTABLISHED
+  WpnService
+ [svchost.exe]
+  TCP    10.17.249.59:56045     117.18.237.29:80       CLOSE_WAIT
+ [SkypeHost.exe]
+  TCP    10.17.249.59:58589     40.100.145.162:443     ESTABLISHED
+ [UcMapi.exe]
+  TCP    10.17.249.59:58732     52.98.2.2:443          ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:58733     52.98.2.2:443          ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:58758     52.111.224.0:443       ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:59770     52.114.7.31:443        ESTABLISHED
+ [chrome.exe]
+  TCP    10.17.249.59:61527     23.53.156.29:443       CLOSE_WAIT
+ [SearchUI.exe]
+  TCP    10.17.249.59:63530     52.113.194.132:443     ESTABLISHED
+ [chrome.exe]
+  TCP    127.0.0.1:6443         0.0.0.0:0              LISTENING
+ [com.docker.backend.exe]
+  TCP    127.0.0.1:6443         127.0.0.1:50974        ESTABLISHED
+ [com.docker.backend.exe]
+  TCP    127.0.0.1:50974        127.0.0.1:6443         ESTABLISHED
+ [com.docker.proxy.exe]
+  TCP    127.0.0.1:52661        127.0.0.1:52660        TIME_WAIT
+  TCP    127.0.0.1:52723        127.0.0.1:52722        TIME_WAIT
+  TCP    127.0.0.1:52781        127.0.0.1:52780        TIME_WAIT
+  TCP    127.0.0.1:52786        127.0.0.1:52785        TIME_WAIT
+  TCP    127.0.0.1:52831        127.0.0.1:52830        TIME_WAIT
+  TCP    127.0.0.1:56988        0.0.0.0:0              LISTENING
+ [com.docker.proxy.exe]
+  TCP    192.168.56.1:139       0.0.0.0:0              LISTENING
+ Can not obtain ownership information
+  TCP    [::]:135               [::]:0                 LISTENING
+  RpcSs
+ [svchost.exe]
+  TCP    [::]:445               [::]:0                 LISTENING
+ Can not obtain ownership information
+  TCP    [::]:1801              [::]:0                 LISTENING
+ [mqsvc.exe]
+  TCP    [::]:2103              [::]:0                 LISTENING
+ [mqsvc.exe]
+  TCP    [::]:2105              [::]:0                 LISTENING
+ [mqsvc.exe]
+  TCP    [::]:2107              [::]:0                 LISTENING
+ [mqsvc.exe]
+  TCP    [::]:2179              [::]:0                 LISTENING
+ [vmms.exe]
+  TCP    [::]:3389              [::]:0                 LISTENING
+  TermService
+ [svchost.exe]
+  TCP    [::]:8080              [::]:0                 LISTENING
+ [com.docker.backend.exe]
+  TCP    [::]:49664             [::]:0                 LISTENING
+ Can not obtain ownership information
+  TCP    [::]:49665             [::]:0                 LISTENING
+ [lsass.exe]
+  TCP    [::]:49666             [::]:0                 LISTENING
+  EventLog
+ [svchost.exe]
+  TCP    [::]:49667             [::]:0                 LISTENING
+  Schedule
+ [svchost.exe]
+  TCP    [::]:49668             [::]:0                 LISTENING
+  SessionEnv
+ [svchost.exe]
+  TCP    [::]:49669             [::]:0                 LISTENING
+  PolicyAgent
+ [svchost.exe]
+  TCP    [::]:49670             [::]:0                 LISTENING
+ [spoolsv.exe]
+  TCP    [::]:49671             [::]:0                 LISTENING
+ [lsass.exe]
+  TCP    [::]:49672             [::]:0                 LISTENING
+ [mqsvc.exe]
+  TCP    [::]:49673             [::]:0                 LISTENING
+ Can not obtain ownership information
+  TCP    [::]:55555             [::]:0                 LISTENING
+ [com.docker.backend.exe]
+  UDP    0.0.0.0:53             *:*                    
+  SharedAccess
+ [svchost.exe]
+  UDP    0.0.0.0:68             *:*                    
+  Dhcp
+ [svchost.exe]
+  UDP    0.0.0.0:123            *:*                    
+  W32Time
+ [svchost.exe]
+  UDP    0.0.0.0:500            *:*                    
+  IKEEXT
+ [svchost.exe]
+  UDP    0.0.0.0:3389           *:*                    
+  TermService
+ [svchost.exe]
+  UDP    0.0.0.0:4500           *:*                    
+  IKEEXT
+ [svchost.exe]
+  UDP    0.0.0.0:5050           *:*                    
+  CDPSvc
+ [svchost.exe]
+  UDP    0.0.0.0:5353           *:*                    
+ [chrome.exe]
+  UDP    0.0.0.0:5353           *:*                    
+ [chrome.exe]
+  UDP    0.0.0.0:5353           *:*                    
+ [chrome.exe]
+  UDP    0.0.0.0:5353           *:*                    
+ [chrome.exe]
+  UDP    0.0.0.0:5353           *:*                    
+ [chrome.exe]
+  UDP    0.0.0.0:5353           *:*                    
+ [chrome.exe]
+  UDP    0.0.0.0:5353           *:*                    
+  Dnscache
+ [svchost.exe]
+  UDP    0.0.0.0:5355           *:*                    
+  Dnscache
+ [svchost.exe]
+  UDP    0.0.0.0:49153          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:49154          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:51760          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:51761          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:53490          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:53491          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:53496          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:53497          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:53501          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:53502          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:54027          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:54028          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:56168          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:56169          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:60626          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:60627          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:64189          *:*                    
+ [SkypeHost.exe]
+  UDP    0.0.0.0:64225          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:64226          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:64231          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:64232          *:*                    
+ [vpnkit.exe]
+  UDP    0.0.0.0:64351          *:*                    
+  SharedAccess
+ [svchost.exe]
+  UDP    0.0.0.0:64352          *:*                    
+  SharedAccess
+ [svchost.exe]
+  UDP    0.0.0.0:64455          *:*                    
+ [Teams.exe]
+  UDP    10.17.249.59:137       *:*                    
+ Can not obtain ownership information
+  UDP    10.17.249.59:138       *:*                    
+ Can not obtain ownership information
+  UDP    10.17.249.59:1900      *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    10.17.249.59:57437     *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    127.0.0.1:1900         *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    127.0.0.1:52449        *:*                    
+  iphlpsvc
+ [svchost.exe]
+  UDP    127.0.0.1:53768        *:*                    
+ [UcMapi.exe]
+  UDP    127.0.0.1:57438        *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    127.0.0.1:57847        *:*                    
+ [com.docker.proxy.exe]
+  UDP    127.0.0.1:58165        *:*                    
+ [lsass.exe]
+  UDP    127.0.0.1:58534        *:*                    
+ [OUTLOOK.EXE]
+  UDP    172.21.70.17:67        *:*                    
+  SharedAccess
+ [svchost.exe]
+  UDP    172.21.70.17:68        *:*                    
+  SharedAccess
+ [svchost.exe]
+  UDP    172.21.70.17:1900      *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    172.21.70.17:57435     *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    192.168.56.1:137       *:*                    
+ Can not obtain ownership information
+  UDP    192.168.56.1:138       *:*                    
+ Can not obtain ownership information
+  UDP    192.168.56.1:1900      *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    192.168.56.1:57436     *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [::]:123               *:*                    
+  W32Time
+ [svchost.exe]
+  UDP    [::]:500               *:*                    
+  IKEEXT
+ [svchost.exe]
+  UDP    [::]:3389              *:*                    
+  TermService
+ [svchost.exe]
+  UDP    [::]:4500              *:*                    
+  IKEEXT
+ [svchost.exe]
+  UDP    [::]:5353              *:*                    
+ [chrome.exe]
+  UDP    [::]:5353              *:*                    
+ [chrome.exe]
+  UDP    [::]:5353              *:*                    
+ [chrome.exe]
+  UDP    [::]:5353              *:*                    
+  Dnscache
+ [svchost.exe]
+  UDP    [::]:5355              *:*                    
+  Dnscache
+ [svchost.exe]
+  UDP    [::]:64189             *:*                    
+ [SkypeHost.exe]
+  UDP    [::]:64353             *:*                    
+  SharedAccess
+ [svchost.exe]
+  UDP    [::]:64455             *:*                    
+ [Teams.exe]
+  UDP    [::1]:1900             *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [::1]:57434            *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [fe80::507e:ddd7:ddd2:6e23%8]:1900  *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [fe80::507e:ddd7:ddd2:6e23%8]:57433  *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [fe80::54cc:7c01:e052:1778%9]:1900  *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [fe80::54cc:7c01:e052:1778%9]:57431  *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [fe80::98ee:a9ca:97e8:9658%23]:1900  *:*                    
+  SSDPSRV
+ [svchost.exe]
+  UDP    [fe80::98ee:a9ca:97e8:9658%23]:57432  *:*                    
+  SSDPSRV
+ [svchost.exe]

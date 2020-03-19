@@ -178,6 +178,13 @@ namespace Tutorial
                 // Context must be created first
                 using (IContext context = ContextFactory.Instance.CreateContext(new ContextProperties(), null))
                 {
+                    #region Solace 
+                    //host = "mr22gx8ufrq6kv.messaging.solace.cloud:20864";
+                    //vpnname = "msgvpn-2pmh5qsq7h33";
+                    //username = "solace-cloud-client";
+                    //password = "ovkkdgqsfmefmogoa3k19h3cd";
+                    #endregion
+
                     // Create the application
                     using (TopicSubscriber topicSubscriber = new TopicSubscriber()
                     {
@@ -189,7 +196,6 @@ namespace Tutorial
                         // Run the application within the context and against the host
                         topicSubscriber.Run(context, host);
                     }
-
                 }
             }
             catch (Exception ex)
